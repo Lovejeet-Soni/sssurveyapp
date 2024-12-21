@@ -81,7 +81,7 @@ const Homepage = () => {
                   }}
                 />
               </Nav.Link>
-              {["about", "services", "projects", "contact", "blog"].map((item) => (
+              {["about", "services", "contact", "faqs"].map((item) => (
                 <Nav.Link
                   key={item}
                   href={`#${item}`}
