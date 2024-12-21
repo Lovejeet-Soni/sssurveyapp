@@ -1,81 +1,292 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import {
+  FaPhone,
+  FaEnvelope,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+} from "react-icons/fa";
 
 const ContactUs = () => {
-    return (
-      <section className="py-5" id="contact">
-        <Container>
-          <h2 className="text-center mb-4">Contact Us</h2>
-          <Row className="justify-content-center">
-            <Col md={6}>
-              <h5>Address</h5>
-              <p>Ratanada, Jodhpur</p>
-  
-              <h5>Phone</h5>
-              <p><a href="tel:+911234567890">+91 12345 67890</a></p>
-  
-              <h5>Email</h5>
-              <p><a href="mailto:info@sssurveypoint.com">info@sssurveypoint.com</a></p>
-  
-              <h5>Location</h5>
-              <iframe
-                title="Google Maps"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.2241356998!2d73.01245661531702!3d26.28174638341606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDE2JzUyLjMiTiA3M8KwMDEnMDkuMCJF!5e0!3m2!1sen!2sin!4v1617181723000"
-                width="100%"
-                height="300"
-                frameBorder="0"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                aria-hidden="false"
-                tabIndex="0"
-              ></iframe>
-            </Col>
-  
-            <Col md={6}>
-              <h5 className="mb-4">Send Us a Message</h5>
-              <Form>
-                <Form.Group className="mb-3" controlId="formName">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control type="text" placeholder="Enter your name" required />
-                </Form.Group>
-  
-                <Form.Group className="mb-3" controlId="formEmail">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" placeholder="Enter your email" required />
-                </Form.Group>
-  
-                <Form.Group className="mb-3" controlId="formPhone">
-                  <Form.Label>Phone Number</Form.Label>
-                  <Form.Control type="tel" placeholder="Enter your phone number" required />
-                </Form.Group>
-  
-                <Form.Group className="mb-3" controlId="formService">
-                  <Form.Label>Service Required</Form.Label>
-                  <Form.Control type="text" placeholder="Specify the service you need" required />
-                </Form.Group>
-  
-                <Form.Group className="mb-3" controlId="formMessage">
-                  <Form.Label>Message</Form.Label>
-                  <Form.Control as="textarea" rows={4} placeholder="Your message" required />
-                </Form.Group>
-  
-                <Button variant="primary" type="submit">
-                  Send Message
-                </Button>
-              </Form>
-  
-              <div className="mt-4">
-                <h5>Follow Us</h5>
-                <p>
-                  <a href="#" className="me-3">Facebook</a>
-                  <a href="#" className="me-3">Twitter</a>
-                  <a href="#">Instagram</a>
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-    );
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    phoneNumber: "",
+    service:""
+  });
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  export default ContactUs
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("sendEmail.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      debugger
+
+      if (response.ok) {
+        setStatusMessage("Your message has been sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatusMessage(
+          "Failed to send your message. Please try again later."
+        );
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setStatusMessage("An error occurred. Please try again later.");
+    }
+  };
+
+  return (
+    <section
+      className="py-5"
+      id="contact"
+      style={{ backgroundColor: "#f9f9f9" }}
+    >
+      <Container>
+        <h2
+          className="text-center mb-4"
+          style={{
+            color: "#007bff",
+            fontWeight: "bold",
+            textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          Contact Us
+        </h2>
+        <Row className="justify-content-center">
+          {/* Contact Details */}
+          <Col md={6}>
+            <h5 style={{ color: "#333", fontWeight: "bold" }}>Address</h5>
+            <p style={{ color: "#555" }}>Ratanada, Jodhpur</p>
+
+            <h5 style={{ color: "#333", fontWeight: "bold" }}>
+              <FaPhone className="me-2" />
+              Phone
+            </h5>
+            <p>
+              <a
+                href="tel:+919664397950"
+                style={{
+                  textDecoration: "none",
+                  color: "#007bff",
+                  fontWeight: "500",
+                }}
+              >
+                +91 9664397950
+              </a>
+            </p>
+
+            <h5 style={{ color: "#333", fontWeight: "bold" }}>
+              <FaEnvelope className="me-2" />
+              Email
+            </h5>
+            <p>
+              <a
+                href="mailto:sssurveypoint@gmail.com"
+                style={{
+                  textDecoration: "none",
+                  color: "#007bff",
+                  fontWeight: "500",
+                }}
+              >
+                sssurveypoint@gmail.com
+              </a>
+            </p>
+
+            <h5 style={{ color: "#333", fontWeight: "bold" }}>Location</h5>
+            <iframe
+              title="Google Maps"
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3577.6526068958874!2d73.0226020754176!3d26.272935877034218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDE2JzIyLjYiTiA3M8KwMDEnMzAuNiJF!5e0!3m2!1sen!2sin!4v1734783453414!5m2!1sen!2sin"
+              width="100%"
+              height="300"
+              frameBorder="0"
+              style={{
+                border: 0,
+                borderRadius: "8px",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                transition: "transform 0.3s ease",
+              }}
+              allowFullScreen=""
+              aria-hidden="false"
+              tabIndex="0"
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = "scale(1.02)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = "scale(1)")
+              }
+            ></iframe>
+          </Col>
+
+          {/* Contact Form */}
+          <Col md={6}>
+            <h5 className="mb-4" style={{ color: "#333", fontWeight: "bold" }}>
+              Send Us a Message
+            </h5>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  required
+                  style={{ borderRadius: "5px" }}
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  style={{ borderRadius: "5px" }}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formPhone">
+                <Form.Label>Phone Number</Form.Label>
+                <Form.Control
+                  type="tel"
+                  name="phoneNumber"
+                  placeholder="Enter your phone number"
+                  required
+                  style={{ borderRadius: "5px" }}
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formService">
+                <Form.Label>Service Required</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  placeholder="Specify the service you need"
+                  required
+                  style={{ borderRadius: "5px" }}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formMessage">
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={4}
+                  name="message"
+                  placeholder="Your message"
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  style={{ borderRadius: "5px" }}
+                />
+              </Form.Group>
+
+              <Button
+                variant="primary"
+                type="submit"
+                style={{
+                  borderRadius: "5px",
+                  padding: "10px 20px",
+                  fontWeight: "bold",
+                  background: "linear-gradient(90deg, #007bff, #0056b3)",
+                  border: "none",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background =
+                    "linear-gradient(90deg, #0056b3, #007bff)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background =
+                    "linear-gradient(90deg, #007bff, #0056b3)")
+                }
+              >
+                Send Message
+              </Button>
+            </Form>
+            {statusMessage && <p className="mt-3">{statusMessage}</p>}
+            <div className="mt-4">
+              <h5 style={{ color: "#333", fontWeight: "bold" }}>Follow Us</h5>
+              <p>
+                <a
+                  href="#"
+                  className="me-3"
+                  style={{
+                    color: "#007bff",
+                    fontSize: "1.2rem",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "#0056b3")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "#007bff")
+                  }
+                >
+                  <FaFacebook />
+                </a>
+                <a
+                  href="#"
+                  className="me-3"
+                  style={{
+                    color: "#007bff",
+                    fontSize: "1.2rem",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "#0056b3")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "#007bff")
+                  }
+                >
+                  <FaTwitter />
+                </a>
+                <a
+                  href="#"
+                  style={{
+                    color: "#007bff",
+                    fontSize: "1.2rem",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "#0056b3")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "#007bff")
+                  }
+                >
+                  <FaInstagram />
+                </a>
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+export default ContactUs;
