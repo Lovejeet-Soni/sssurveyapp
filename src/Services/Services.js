@@ -1,15 +1,15 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import image1 from '../Images/surveyor_1.jpg';
-import image2 from '../Images/service2.jpg';
-import image3 from '../Images/service3.jpg';
-import image4 from '../Images/service4.jpg';
-import image5 from '../Images/service5.jpg';
-import image6 from '../Images/service6.jpg';
-import image7 from '../Images/service7.jpg';
-import image8 from '../Images/service8.jpg';
-import image9 from '../Images/service9.jpg';
+import image1 from "../Images/image4.jpg";
+import image2 from "../Images/image2.jpg";
+import image3 from "../Images/image3.jpg";
+import image4 from "../Images/service4.jpg";
+import image5 from "../Images/image.jpg";
+import image6 from "../Images/image5.jpg";
+import image7 from "../Images/service7.jpg";
+import image8 from "../Images/service8.jpg";
+import image9 from "../Images/image7.jpg";
 
 const servicesData = [
   {
@@ -61,53 +61,82 @@ const servicesData = [
 
 const ServiceCard = ({ title, description, image }) => {
   return (
-    <Col xs={12} sm={6} md={4} lg={3}>
-      <Card
-        className="h-100"
+    <Col
+      xs={12}
+      sm={6}
+      md={4}
+      lg={3}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div
         style={{
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-          transition: "all 0.3s ease-in-out",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-5px)";
-          e.currentTarget.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.3)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+          width: "100%",
+          maxWidth: "300px",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
         }}
       >
-        <Card.Img
-          variant="top"
-          src={image}
-          alt={title}
+        <Card
+          className="h-100"
           style={{
-            height: "100%",
-            objectFit: "fill",
-            borderRadius: "8px",
+            border: "none",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            overflow: "hidden",
+            borderRadius: "12px",
           }}
-        />
-        <Card.Body>
-          <Card.Title
+        >
+          <div
             style={{
-              fontWeight: "bold",
-              color: "#007BFF", /* Blue */
-              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+              position: "relative",
+              width: "100%",
+              paddingTop: "56.25%", // Aspect ratio for 16:9 images
+              overflow: "hidden",
+              borderTopLeftRadius: "12px",
+              borderTopRightRadius: "12px",
             }}
           >
-            {title}
-          </Card.Title>
-          <Card.Text
-            style={{
-              fontWeight: "bold",
-              color: "#333", /* Darker text */
-              textShadow: "1px 1px 2px rgba(0, 0, 0, 0.2)",
-            }}
-          >
-            {description}
-          </Card.Text>
-        </Card.Body>
-      </Card>
+            <img
+              src={image}
+              alt={title}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderTopLeftRadius: "12px",
+                borderTopRightRadius: "12px",
+              }}
+            />
+          </div>
+          <Card.Body>
+            <Card.Title
+              style={{
+                fontFamily: "Times New Roman, serif",
+                fontWeight: "bold",
+                color: "#FF6600",
+                fontSize: "1.2rem",
+                textAlign: "center",
+              }}
+            >
+              {title}
+            </Card.Title>
+            <Card.Text
+              style={{
+                fontFamily: "Times New Roman, serif",
+                fontSize: "1rem",
+                color: "#333",
+                textAlign: "center",
+              }}
+            >
+              {description}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </div>
     </Col>
   );
 };
@@ -115,27 +144,32 @@ const ServiceCard = ({ title, description, image }) => {
 const Services = () => {
   return (
     <section
-      className="py-5"
       id="services"
       style={{
-        paddingTop: "5rem",
-        paddingBottom: "5rem",
-        background: "#f9f9f9", /* Light background color */
+        background: "#f9f9f9",
+        padding: "40px 0",
       }}
     >
       <Container>
         <h2
-          className="text-center mb-4"
           style={{
             fontSize: "2.5rem",
             fontWeight: "bold",
-            color: "#2980b9", 
-            textShadow: "2px 2px 5px rgba(0, 0, 0, 0.2)",
+            color: "#FF6600",
+            fontFamily: "Times New Roman, serif",
+            textAlign: "center",
+            marginBottom: "30px",
           }}
         >
           Our Services
         </h2>
-        <Row className="g-4">
+        <Row
+          className="g-4"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           {servicesData.map((service, index) => (
             <ServiceCard
               key={index}

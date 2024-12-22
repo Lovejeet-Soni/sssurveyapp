@@ -10,6 +10,7 @@ const Footer = () => {
         backgroundColor: "#002366", // Blue background
         color: "#FF7F11", // Hindu orange text
         boxShadow: "0 -3px 8px rgba(0, 0, 0, 0.2)",
+        fontFamily: "'Times New Roman', Times, serif",
       }}
     >
       <Container>
@@ -20,8 +21,10 @@ const Footer = () => {
               className="text-uppercase"
               style={{
                 color: "#FF7F11",
-                fontWeight: "700",
+                fontWeight: "bold",
+                fontFamily: "'Times New Roman', Times, serif",
                 letterSpacing: "1px",
+                textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
               }}
             >
               Quick Links
@@ -34,7 +37,7 @@ const Footer = () => {
                       href={`#${link.toLowerCase().replace(" ", "")}`}
                       className="text-light text-decoration-none"
                       style={{
-                        fontSize: "0.9rem",
+                        fontSize: "1rem",
                         transition: "color 0.3s ease",
                       }}
                     >
@@ -52,13 +55,15 @@ const Footer = () => {
               className="text-uppercase"
               style={{
                 color: "#FF7F11",
-                fontWeight: "700",
+                fontWeight: "bold",
+                fontFamily: "'Times New Roman', Times, serif",
                 letterSpacing: "1px",
+                textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
               }}
             >
               Contact Details
             </h5>
-            <p style={{ fontSize: "0.9rem" }}>Ratanada, Jodhpur</p>
+            <p style={{ fontSize: "1rem" }}>Ratanada, Jodhpur</p>
             <p>
               Phone:{" "}
               <a
@@ -91,8 +96,10 @@ const Footer = () => {
               className="text-uppercase"
               style={{
                 color: "#FF7F11",
-                fontWeight: "700",
+                fontWeight: "bold",
+                fontFamily: "'Times New Roman', Times, serif",
                 letterSpacing: "1px",
+                textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
               }}
             >
               Follow Us
@@ -108,7 +115,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaFacebookF size={28} color="#4267B2" />
+                <FaFacebookF size={30} color="#4267B2" />
               </a>
               <a
                 href="#"
@@ -120,7 +127,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaTwitter size={28} color="#1DA1F2" />
+                <FaTwitter size={30} color="#1DA1F2" />
               </a>
               <a
                 href="#"
@@ -132,7 +139,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaInstagram size={28} color="#E1306C" />
+                <FaInstagram size={30} color="#E1306C" />
               </a>
             </div>
           </Col>
@@ -143,7 +150,7 @@ const Footer = () => {
           <Col className="text-center">
             <p
               style={{
-                fontSize: "0.85rem",
+                fontSize: "0.9rem",
                 borderTop: "1px solid #FF7F11",
                 paddingTop: "10px",
               }}

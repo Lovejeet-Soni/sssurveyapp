@@ -15,7 +15,7 @@ const ContactUs = () => {
     email: "",
     message: "",
     phoneNumber: "",
-    service:""
+    service: "",
   });
   const [statusMessage, setStatusMessage] = useState("");
 
@@ -34,11 +34,10 @@ const ContactUs = () => {
         },
         body: JSON.stringify(formData),
       });
-      debugger
 
       if (response.ok) {
         setStatusMessage("Your message has been sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "", phoneNumber: "", service: "" });
       } else {
         setStatusMessage(
           "Failed to send your message. Please try again later."
@@ -60,8 +59,9 @@ const ContactUs = () => {
         <h2
           className="text-center mb-4"
           style={{
-            color: "#007bff",
+            color: "#FF9933", // Hindu orange
             fontWeight: "bold",
+            fontFamily: "'Times New Roman', serif",
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",
           }}
         >
@@ -70,10 +70,10 @@ const ContactUs = () => {
         <Row className="justify-content-center">
           {/* Contact Details */}
           <Col md={6}>
-            <h5 style={{ color: "#333", fontWeight: "bold" }}>Address</h5>
+            <h5 style={{ color: "#FF9933", fontWeight: "bold", fontFamily: "'Times New Roman', serif" }}>Address</h5>
             <p style={{ color: "#555" }}>Ratanada, Jodhpur</p>
 
-            <h5 style={{ color: "#333", fontWeight: "bold" }}>
+            <h5 style={{ color: "#FF9933", fontWeight: "bold", fontFamily: "'Times New Roman', serif" }}>
               <FaPhone className="me-2" />
               Phone
             </h5>
@@ -90,7 +90,7 @@ const ContactUs = () => {
               </a>
             </p>
 
-            <h5 style={{ color: "#333", fontWeight: "bold" }}>
+            <h5 style={{ color: "#FF9933", fontWeight: "bold", fontFamily: "'Times New Roman', serif" }}>
               <FaEnvelope className="me-2" />
               Email
             </h5>
@@ -107,7 +107,7 @@ const ContactUs = () => {
               </a>
             </p>
 
-            <h5 style={{ color: "#333", fontWeight: "bold" }}>Location</h5>
+            <h5 style={{ color: "#FF9933", fontWeight: "bold", fontFamily: "'Times New Roman', serif" }}>Location</h5>
             <iframe
               title="Google Maps"
               src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3577.6526068958874!2d73.0226020754176!3d26.272935877034218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDE2JzIyLjYiTiA3M8KwMDEnMzAuNiJF!5e0!3m2!1sen!2sin!4v1734783453414!5m2!1sen!2sin"
@@ -134,7 +134,10 @@ const ContactUs = () => {
 
           {/* Contact Form */}
           <Col md={6}>
-            <h5 className="mb-4" style={{ color: "#333", fontWeight: "bold" }}>
+            <h5
+              className="mb-4"
+              style={{ color: "#FF9933", fontWeight: "bold", fontFamily: "'Times New Roman', serif" }}
+            >
               Send Us a Message
             </h5>
             <Form onSubmit={handleSubmit}>
@@ -228,7 +231,7 @@ const ContactUs = () => {
             </Form>
             {statusMessage && <p className="mt-3">{statusMessage}</p>}
             <div className="mt-4">
-              <h5 style={{ color: "#333", fontWeight: "bold" }}>Follow Us</h5>
+              <h5 style={{ color: "#FF9933", fontWeight: "bold", fontFamily: "'Times New Roman', serif" }}>Follow Us</h5>
               <p>
                 <a
                   href="#"

@@ -2,7 +2,6 @@ import { Accordion, Container } from "react-bootstrap";
 
 const FAQs = () => {
   return (
-    
     <section
       className="py-5"
       id="faqs"
@@ -14,8 +13,9 @@ const FAQs = () => {
         <h2
           className="text-center mb-4"
           style={{
-            color: "#007bff",
+            color: "#FF8C00",
             fontWeight: "bold",
+            fontFamily: "Times New Roman, serif",
             textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",
           }}
         >
@@ -35,7 +35,8 @@ const FAQs = () => {
               style={{
                 fontWeight: "600",
                 fontSize: "1.1rem",
-                color: "#0056b3",
+                fontFamily: "Times New Roman, serif",
+                color: "#FF8C00",
               }}
             >
               What is the process of a land survey?
@@ -46,6 +47,7 @@ const FAQs = () => {
                 color: "#333",
                 padding: "15px",
                 fontSize: "0.9rem",
+                fontFamily: "Times New Roman, serif",
               }}
             >
               Our process involves fieldwork, data collection, and detailed
@@ -66,7 +68,8 @@ const FAQs = () => {
               style={{
                 fontWeight: "600",
                 fontSize: "1.1rem",
-                color: "#0056b3",
+                fontFamily: "Times New Roman, serif",
+                color: "#FF8C00",
               }}
             >
               How long does it take?
@@ -77,6 +80,7 @@ const FAQs = () => {
                 color: "#333",
                 padding: "15px",
                 fontSize: "0.9rem",
+                fontFamily: "Times New Roman, serif",
               }}
             >
               Depending on the project, it can take between 2 days to 2 weeks.
@@ -96,7 +100,8 @@ const FAQs = () => {
               style={{
                 fontWeight: "600",
                 fontSize: "1.1rem",
-                color: "#0056b3",
+                fontFamily: "Times New Roman, serif",
+                color: "#FF8C00",
               }}
             >
               What documents are required for a survey?
@@ -107,6 +112,7 @@ const FAQs = () => {
                 color: "#333",
                 padding: "15px",
                 fontSize: "0.9rem",
+                fontFamily: "Times New Roman, serif",
               }}
             >
               Property deeds, previous survey reports, and identification

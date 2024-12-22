@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../Images/logo.png"; // Update the path to your logo file
 import "bootstrap/dist/css/bootstrap.min.css";
-import backgroundImage from "../Images/backgroundImage2.jpg"
+import backgroundImage from "../Images/background.jpg";
+
 const Homepage = () => {
-  // Set default active link to 'home'
   const [activeLink, setActiveLink] = useState("home");
 
-  // Function to handle the link click and apply the underline effect
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
 
   useEffect(() => {
-    // Ensure the home link is set as the active link by default when the page loads
     setActiveLink("home");
   }, []);
 
@@ -28,16 +26,16 @@ const Homepage = () => {
           top: 0,
           left: 0,
           right: 0,
-          background: "rgba(26, 25, 25, 0.42)", // Slightly darkened background for visibility on all screens
+          background: "rgba(26, 25, 25, 0.85)",
           zIndex: 10,
-          boxShadow: "0 4px 6px rgba(26, 25, 25, 0.42)",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
           padding: "10px 0",
           transition: "background-color 0.3s ease-in-out",
         }}
         className="navbar-dark"
       >
         <Container>
-          <Navbar.Brand href="#home" style={{ color: "white", fontWeight: "bold" }}>
+          <Navbar.Brand href="#home" style={{ fontFamily: "Times New Roman", fontWeight: "bold", color: "orange" }}>
             <img
               src={logo}
               alt="Ss Survey Point"
@@ -49,8 +47,8 @@ const Homepage = () => {
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             style={{
-              backgroundColor: "black", // Set the toggle button color to match the theme
-              borderColor: "rgb(19, 75, 136)", // Optional: Make the border of the button the same color
+              backgroundColor: "black",
+              borderColor: "rgb(19, 75, 136)",
             }}
           />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -59,23 +57,24 @@ const Homepage = () => {
                 href="#home"
                 onClick={() => handleLinkClick("home")}
                 style={{
-                  color: activeLink === "home" ? "blue" : "white", // Active link color
+                  color: activeLink === "home" ? "blue" : "white",
+                  fontFamily: "Times New Roman",
                   fontWeight: "bold",
                   margin: "0 15px",
                   position: "relative",
+                  transition: "color 0.3s ease",
                 }}
               >
-                {/* Home Icon */}
                 Home
                 <span
                   style={{
                     position: "absolute",
                     width: "100%",
                     height: "3px",
-                    backgroundColor: "#ff9933",
+                    backgroundColor: "orange",
                     bottom: 0,
                     left: 0,
-                    transform: activeLink === "home" ? "scaleX(1)" : "scaleX(0)", // Underline animation on click
+                    transform: activeLink === "home" ? "scaleX(1)" : "scaleX(0)",
                     transformOrigin: "bottom right",
                     transition: "transform 0.3s ease-out",
                   }}
@@ -87,22 +86,24 @@ const Homepage = () => {
                   href={`#${item}`}
                   onClick={() => handleLinkClick(item)}
                   style={{
-                    color: activeLink === item ? "blue" : "white", // Active link color
+                    color: activeLink === item ? "blue" : "white",
+                    fontFamily: "Times New Roman",
                     fontWeight: "bold",
                     margin: "0 15px",
                     position: "relative",
+                    transition: "color 0.3s ease",
                   }}
                 >
-                  {item.charAt(0).toUpperCase() + item.slice(1)} {/* Capitalize the first letter */}
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
                   <span
                     style={{
                       position: "absolute",
                       width: "100%",
                       height: "3px",
-                      backgroundColor: "#ff9933",
+                      backgroundColor: "orange",
                       bottom: 0,
                       left: 0,
-                      transform: activeLink === item ? "scaleX(1)" : "scaleX(0)", // Underline animation on click
+                      transform: activeLink === item ? "scaleX(1)" : "scaleX(0)",
                       transformOrigin: "bottom right",
                       transition: "transform 0.3s ease-out",
                     }}
@@ -114,28 +115,27 @@ const Homepage = () => {
         </Container>
       </Navbar>
       <section
-        className="text-light text-center d-flex align-items-center justify-content-center py-5"
+        className="text-light text-left d-flex flex-column align-items-start justify-content-start py-5"
         style={{
           position: "relative",
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "100vh", // Full screen height
-          zIndex: 1, // Ensure the background image stays below the navbar
-          paddingTop: "80px", // Add space between navbar and text
+          height: "100vh",
+          zIndex: 1,
+          paddingTop: "80px", // Adjusted padding to place text below the navbar
+          animation: "fadeIn 2s ease-in-out",
         }}
       >
-        <Container style={{ position: "relative", zIndex: 1, textAlign: "left" }}>
+        <Container style={{ position: "relative", zIndex: 1, textAlign: "left", marginTop: "100px" }}>
           <h1
             className="display-4"
             style={{
-              background: "linear-gradient(90deg, rgb(171, 197, 224), #ff9933)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              fontWeight: "bold",
-              textShadow: "4px 2px 4px rgba(249, 146, 3, 0.67)",
-              color: "rgb(95, 165, 239)",
+              fontFamily: "Times New Roman OS Bold",
+              color: "#FF9933",
+              textShadow: "2px 2px 6px rgba(245, 162, 89, 0.5)",
               marginBottom: "20px",
+              animation: "textGlow 1.5s infinite alternate",
             }}
           >
             Ss Survey Point
@@ -143,19 +143,28 @@ const Homepage = () => {
           <p
             className="lead"
             style={{
-              background: "linear-gradient(90deg, rgb(171, 197, 224), #ff9933)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              fontWeight: "bold",
-              textShadow: "4px 2px 4px rgba(249, 146, 3, 0.67)",
-              color: "rgb(95, 165, 239)",
-              marginTop: "0",
+              fontFamily: "Times New Roman OS Bold",
+              color: "#FF9933",
+              textShadow: "2px 2px 6px rgba(245, 162, 89, 0.5)",
+              animation: "fadeIn 3s ease-in",
             }}
           >
             Expert Land Surveying and Civil Services in Ratanada, Jodhpur
           </p>
         </Container>
       </section>
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes textGlow {
+            from { text-shadow: 4px 4px 8px rgba(249, 146, 3, 0.67); }
+            to { text-shadow: 6px 6px 12px rgba(255, 165, 0, 0.9); }
+          }
+        `}
+      </style>
     </Container>
   );
 };
