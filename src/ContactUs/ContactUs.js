@@ -234,7 +234,7 @@ const ContactUs = () => {
               <h5 style={{ color: "#FF9933", fontWeight: "bold", fontFamily: "'Times New Roman', serif" }}>Follow Us</h5>
               <p>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/profile.php?id=61571412863054"
                   className="me-3"
                   style={{
                     color: "#007bff",
@@ -251,24 +251,7 @@ const ContactUs = () => {
                   <FaFacebook />
                 </a>
                 <a
-                  href="#"
-                  className="me-3"
-                  style={{
-                    color: "#007bff",
-                    fontSize: "1.2rem",
-                    transition: "color 0.3s ease",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#0056b3")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "#007bff")
-                  }
-                >
-                  <FaTwitter />
-                </a>
-                <a
-                  href="#"
+                  href="https://www.instagram.com/sssurveypoint"
                   style={{
                     color: "#007bff",
                     fontSize: "1.2rem",

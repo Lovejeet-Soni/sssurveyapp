@@ -35,7 +35,14 @@ const Homepage = () => {
         className="navbar-dark"
       >
         <Container>
-          <Navbar.Brand href="#home" style={{ fontFamily: "Times New Roman", fontWeight: "bold", color: "orange" }}>
+          <Navbar.Brand
+            href="#home"
+            style={{
+              fontFamily: "Times New Roman",
+              fontWeight: "bold",
+              color: "orange",
+            }}
+          >
             <img
               src={logo}
               alt="Ss Survey Point"
@@ -74,7 +81,8 @@ const Homepage = () => {
                     backgroundColor: "orange",
                     bottom: 0,
                     left: 0,
-                    transform: activeLink === "home" ? "scaleX(1)" : "scaleX(0)",
+                    transform:
+                      activeLink === "home" ? "scaleX(1)" : "scaleX(0)",
                     transformOrigin: "bottom right",
                     transition: "transform 0.3s ease-out",
                   }}
@@ -103,7 +111,8 @@ const Homepage = () => {
                       backgroundColor: "orange",
                       bottom: 0,
                       left: 0,
-                      transform: activeLink === item ? "scaleX(1)" : "scaleX(0)",
+                      transform:
+                        activeLink === item ? "scaleX(1)" : "scaleX(0)",
                       transformOrigin: "bottom right",
                       transition: "transform 0.3s ease-out",
                     }}
@@ -127,15 +136,22 @@ const Homepage = () => {
           animation: "fadeIn 2s ease-in-out",
         }}
       >
-        <Container style={{ position: "relative", zIndex: 1, textAlign: "left", marginTop: "100px" }}>
+        <Container
+          style={{
+            position: "relative",
+            zIndex: 1,
+            textAlign: "left",
+            marginTop: "100px",
+          }}
+        >
           <h1
             className="display-4"
             style={{
-              fontFamily: "Times New Roman OS Bold",
-              color: "#FF9933",
-              textShadow: "2px 2px 6px rgba(245, 162, 89, 0.5)",
+              fontFamily: "Poppins, sans-serif",
+              color: "#FFFFFF",
+              textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)", // Darker shadow for better contrast
               marginBottom: "20px",
-              animation: "textGlow 1.5s infinite alternate",
+              animation: "textPulse 1.5s infinite alternate", // Subtle glowing effect
             }}
           >
             Ss Survey Point
@@ -143,10 +159,10 @@ const Homepage = () => {
           <p
             className="lead"
             style={{
-              fontFamily: "Times New Roman OS Bold",
-              color: "#FF9933",
-              textShadow: "2px 2px 6px rgba(245, 162, 89, 0.5)",
-              animation: "fadeIn 3s ease-in",
+              fontFamily: "Poppins, sans-serif",
+              color: "#FFFFFF",
+              textShadow: "1px 1px 4px rgba(0, 0, 0, 0.6)", // Subtle shadow for readability
+              animation: "fadeIn 2s ease-in", // Smooth fade-in effect
             }}
           >
             Expert Land Surveying and Civil Services in Ratanada, Jodhpur
@@ -155,14 +171,24 @@ const Homepage = () => {
       </section>
       <style>
         {`
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes textGlow {
-            from { text-shadow: 4px 4px 8px rgba(249, 146, 3, 0.67); }
-            to { text-shadow: 6px 6px 12px rgba(255, 165, 0, 0.9); }
-          }
+         @keyframes textPulse {
+  0% {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
         `}
       </style>
     </Container>

@@ -106,7 +106,7 @@ const Footer = () => {
             </h5>
             <div className="d-flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61571412863054"
                 className="text-light"
                 style={{
                   transition: "transform 0.3s ease, color 0.3s ease",
@@ -118,19 +118,7 @@ const Footer = () => {
                 <FaFacebookF size={30} color="#4267B2" />
               </a>
               <a
-                href="#"
-                className="text-light"
-                style={{
-                  transition: "transform 0.3s ease, color 0.3s ease",
-                }}
-                aria-label="Twitter"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter size={30} color="#1DA1F2" />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/sssurveypoint"
                 className="text-light"
                 style={{
                   transition: "transform 0.3s ease, color 0.3s ease",
