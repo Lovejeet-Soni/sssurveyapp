@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Carousel } from "react-bootstrap";
 import logo from "../Images/logo.png"; // Update the path to your logo file
 import "bootstrap/dist/css/bootstrap.min.css";
-import backgroundImage from "../Images/background.jpg";
+import backgroundImage1 from "../Images/background.jpg";
+import backgroundImage2 from "../Images/swiping1.jpg";
+import backgroundImage3 from "../Images/swipingimage.jpg";
 
 const Homepage = () => {
+  const images = [backgroundImage1, backgroundImage2, backgroundImage3];
   const [activeLink, setActiveLink] = useState("home");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleSelect = (selectedIndex) => {
+    setCurrentIndex(selectedIndex);
+  };
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -73,20 +81,6 @@ const Homepage = () => {
                 }}
               >
                 Home
-                <span
-                  style={{
-                    position: "absolute",
-                    width: "100%",
-                    height: "3px",
-                    backgroundColor: "orange",
-                    bottom: 0,
-                    left: 0,
-                    transform:
-                      activeLink === "home" ? "scaleX(1)" : "scaleX(0)",
-                    transformOrigin: "bottom right",
-                    transition: "transform 0.3s ease-out",
-                  }}
-                />
               </Nav.Link>
               {["about", "services", "contact", "faqs"].map((item) => (
                 <Nav.Link
@@ -103,92 +97,83 @@ const Homepage = () => {
                   }}
                 >
                   {item.charAt(0).toUpperCase() + item.slice(1)}
-                  <span
-                    style={{
-                      position: "absolute",
-                      width: "100%",
-                      height: "3px",
-                      backgroundColor: "orange",
-                      bottom: 0,
-                      left: 0,
-                      transform:
-                        activeLink === item ? "scaleX(1)" : "scaleX(0)",
-                      transformOrigin: "bottom right",
-                      transition: "transform 0.3s ease-out",
-                    }}
-                  />
                 </Nav.Link>
               ))}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <section
-        className="text-light text-left d-flex flex-column align-items-start justify-content-start py-5"
-        style={{
-          position: "relative",
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "100vh",
-          zIndex: 1,
-          paddingTop: "80px", // Adjusted padding to place text below the navbar
-          animation: "fadeIn 2s ease-in-out",
-        }}
+
+      {/* Carousel Section */}
+      <Carousel
+        activeIndex={currentIndex}
+        onSelect={handleSelect}
+        fade
+        interval={5000}
+        controls
+        indicators
+        wrap
+        className="homepage-carousel"
       >
-        <Container
-          style={{
-            position: "relative",
-            zIndex: 1,
-            textAlign: "left",
-            marginTop: "100px",
-          }}
-        >
-          <h1
-            className="display-4"
-            style={{
-              fontFamily: "Poppins, sans-serif",
-              color: "#FFFFFF",
-              textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)", // Darker shadow for better contrast
-              marginBottom: "20px",
-              animation: "textPulse 1.5s infinite alternate", // Subtle glowing effect
-            }}
-          >
-            Ss Survey Point
-          </h1>
-          <p
-            className="lead"
-            style={{
-              fontFamily: "Poppins, sans-serif",
-              color: "#FFFFFF",
-              textShadow: "1px 1px 4px rgba(0, 0, 0, 0.6)", // Subtle shadow for readability
-              animation: "fadeIn 2s ease-in", // Smooth fade-in effect
-            }}
-          >
-            Expert Land Surveying and Civil Services in Ratanada, Jodhpur
-          </p>
-        </Container>
-      </section>
+        {images.map((image, index) => (
+          <Carousel.Item key={index}>
+            <div
+              style={{
+                position: "relative",
+                backgroundImage: `url(${image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "100vh",
+                zIndex: 1,
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  top: "20%",
+                  left: "10%",
+                  zIndex: 2,
+                  color: "white",
+                }}
+              >
+                <h1 className="carousel-text">Ss Survey Point</h1>
+                <p className="carousel-subtext">
+                  Expert Land Surveying and Civil Services in Ratanada, Jodhpur
+                </p>
+              </div>
+            </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+
       <style>
         {`
-         @keyframes textPulse {
-  0% {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
-  }
-  100% {
-    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.8);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
+          .carousel-text {
+            font-size: 3rem;
+            font-family: "Poppins, sans-serif";
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+          }
+          .carousel-subtext {
+            font-size: 1.5rem;
+            font-family: "Poppins, sans-serif";
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+          }
+          @media (max-width: 768px) {
+            .carousel-text {
+              font-size: 2rem;
+            }
+            .carousel-subtext {
+              font-size: 1rem;
+            }
+          }
+          @media (max-width: 576px) {
+            .carousel-text {
+              font-size: 1.5rem;
+            }
+            .carousel-subtext {
+              font-size: 0.9rem;
+            }
+          }
         `}
       </style>
     </Container>

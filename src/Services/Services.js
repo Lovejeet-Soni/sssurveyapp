@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import image1 from "../Images/swipingimage.jpg";
+import image1 from "../Images/image4.jpg";
 import image2 from "../Images/totalstationsurvey.jpg";
-import image3 from "../Images/swiping1.jpg";
+import image3 from "../Images/image3.jpg";
 import image4 from "../Images/service4.jpg";
 import image5 from "../Images/demarcationservices.jpg";
 import image6 from "../Images/image5.jpg";
